@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 /** True if the user explicitly set VITE_API_BASE_URL in an env file */
 const ENV_API_URL = import.meta.env.VITE_API_BASE_URL as string | undefined;
-const HARDCODED_FALLBACK = "http://localhost:8000/api/v1";
+const HARDCODED_FALLBACK = "https://smart-mahalla-w0a1.onrender.com/api/v1";
 
 const BASE_URL: string = ENV_API_URL ?? HARDCODED_FALLBACK;
 
@@ -16,11 +16,10 @@ console.groupCollapsed("%c[API Client] Initializing", "color: #3b82f6; font-weig
 console.log("VITE_API_BASE_URL (from env):", ENV_API_URL ?? "(not set)");
 console.log("Resolved BASE_URL:", BASE_URL);
 if (!ENV_API_URL) {
-  console.warn(
-    "⚠️  VITE_API_BASE_URL is not set in any .env file.\n" +
-    "   Create a `.env` file in the project root with:\n" +
-    `     VITE_API_BASE_URL=http://localhost:8000/api/v1\n` +
-    `   Currently using hardcoded fallback: ${HARDCODED_FALLBACK}`
+  console.log(
+    "%c[API Client] Using default fallback:",
+    "color: #22c55e",
+    HARDCODED_FALLBACK
   );
 }
 console.groupEnd();
